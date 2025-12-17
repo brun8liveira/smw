@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>SNES NFC</title>
+
+  <script>
+    EJS_player = "#game";
+    EJS_core = "snes";
+    EJS_gameUrl = "roms/swm.smc";
+    EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+  </script>
+
+  <script src="https://cdn.emulatorjs.org/stable/loader.js"></script>
+
+  <style>
+    html, body {
+      margin: 0;
+      background: black;
+      height: 100%;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    #game {
+      width: 100vw;
+      height: 100vh;
+    }
+    #btn {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 15px 30px;
+      font-size: 18px;
+      background: #fff;
+      border: none;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="game"></div>
+
+  <button id="btn" onclick="document.documentElement.requestFullscreen()">
+    JOGAR EM TELA CHEIA
+  </button>
+
+</body>
+</html>
