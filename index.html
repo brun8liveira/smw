@@ -11,8 +11,16 @@
   EJS_core = "snes";
   EJS_gameUrl = "roms/smw.smc";
   EJS_pathtodata = "EmulatorJS-main/data/";
-  EJS_startOnLoaded = false;      // 🔴 NÃO iniciar automático
+  EJS_startOnLoaded = false;
   EJS_fullscreenOnLoaded = false;
+
+  let emulatorReady = false;
+
+  // 🔥 Evento correto
+  EJS_ready = function () {
+    emulatorReady = true;
+    console.log("EmulatorJS pronto");
+  };
 </script>
 
 <script src="EmulatorJS-main/data/loader.js"></script>
@@ -49,9 +57,19 @@ html, body {
 
 <script>
 function startGame() {
+  if (!emulatorReady || !window.EJS_emulator) {
+    alert("Carregando, aguarde 1 segundo...");
+    return;
+  }
+
   document.getElementById("start").style.display = "none";
   document.getElementById("game").style.display = "block";
+
+  // 🔴 iniciar corretamente
   window.EJS_emulator.start();
+
+  // fullscreen após gesto
+  document.documentElement.requestFullscreen?.();
 }
 </script>
 
