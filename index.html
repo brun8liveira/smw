@@ -11,16 +11,10 @@
   EJS_core = "snes";
   EJS_gameUrl = "roms/smw.smc";
   EJS_pathtodata = "EmulatorJS-main/data/";
-  EJS_startOnLoaded = false;
+
+  // 🔴 deixa o emulador iniciar sozinho
+  EJS_startOnLoaded = true;
   EJS_fullscreenOnLoaded = false;
-
-  let emulatorReady = false;
-
-  // 🔥 Evento correto
-  EJS_ready = function () {
-    emulatorReady = true;
-    console.log("EmulatorJS pronto");
-  };
 </script>
 
 <script src="EmulatorJS-main/data/loader.js"></script>
@@ -35,9 +29,8 @@ html, body {
 #game {
   width: 100vw;
   height: 100vh;
-  display: none;
 }
-#start {
+#overlay {
   position: fixed;
   inset: 0;
   background: black;
@@ -46,31 +39,24 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 10;
 }
 </style>
 </head>
 
 <body>
 
-<div id="start" onclick="startGame()">▶ TOCAR PARA JOGAR</div>
+<div id="overlay">▶ TOCAR PARA JOGAR</div>
 <div id="game"></div>
 
 <script>
-function startGame() {
-  if (!emulatorReady || !window.EJS_emulator) {
-    alert("Carregando, aguarde 1 segundo...");
-    return;
-  }
+document.getElementById("overlay").addEventListener("click", () => {
+  // gesto do usuário (obrigatório no Android)
+  document.getElementById("overlay").remove();
 
-  document.getElementById("start").style.display = "none";
-  document.getElementById("game").style.display = "block";
-
-  // 🔴 iniciar corretamente
-  window.EJS_emulator.start();
-
-  // fullscreen após gesto
+  // fullscreen só após toque
   document.documentElement.requestFullscreen?.();
-}
+});
 </script>
 
 </body>
