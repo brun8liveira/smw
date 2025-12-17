@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Teste EmulatorJS</title>
+  <title>SNES NFC</title>
 
   <script>
-    console.log("ANTES do EmulatorJS");
+    EJS_threads = false;
+    EJS_player = "#game";
+    EJS_core = "snes";
+    EJS_gameUrl = "roms/smw.smc";
+    EJS_pathtodata = "emulatorjs/data/";
   </script>
 
-  <script src="https://cdn.emulatorjs.org/stable/loader.js"
-          onload="console.log('LOADER CARREGOU')"
-          onerror="console.error('LOADER NÃO CARREGOU')">
-  </script>
+  <script src="emulatorjs/data/loader.js"></script>
 
-  <script>
-    console.log("DEPOIS do EmulatorJS");
-  </script>
+  <style>
+    html, body {
+      margin: 0;
+      background: black;
+      height: 100%;
+      overflow: hidden;
+    }
+    #game {
+      width: 100vw;
+      height: 100vh;
+    }
+  </style>
 </head>
 <body>
-  <h1>Teste</h1>
+
+  <div id="game"></div>
+
 </body>
 </html>
