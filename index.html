@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <title>SNES NFC</title>
+<meta charset="UTF-8">
+<title>SNES NFC</title>
 
 <script>
   EJS_DEBUG_XX = true;
@@ -11,26 +11,49 @@
   EJS_core = "snes";
   EJS_gameUrl = "roms/smw.smc";
   EJS_pathtodata = "EmulatorJS-main/data/";
+  EJS_startOnLoaded = false;      // 🔴 NÃO iniciar automático
+  EJS_fullscreenOnLoaded = false;
 </script>
 
 <script src="EmulatorJS-main/data/loader.js"></script>
-  
-  <style>
-    html, body {
-      margin: 0;
-      background: black;
-      height: 100%;
-      overflow: hidden;
-    }
-    #game {
-      width: 100vw;
-      height: 100vh;
-    }
-  </style>
+
+<style>
+html, body {
+  margin: 0;
+  background: black;
+  height: 100%;
+  overflow: hidden;
+}
+#game {
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+#start {
+  position: fixed;
+  inset: 0;
+  background: black;
+  color: white;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
 </head>
+
 <body>
 
-  <div id="game"></div>
+<div id="start" onclick="startGame()">▶ TOCAR PARA JOGAR</div>
+<div id="game"></div>
+
+<script>
+function startGame() {
+  document.getElementById("start").style.display = "none";
+  document.getElementById("game").style.display = "block";
+  window.EJS_emulator.start();
+}
+</script>
 
 </body>
 </html>
