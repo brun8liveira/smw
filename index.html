@@ -1,51 +1,23 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html>
 <head>
   <meta charset="UTF-8">
-  <title>SNES NFC</title>
+  <title>Teste EmulatorJS</title>
 
   <script>
-    EJS_threads = false;        // 🔴 ESSENCIAL NO GITHUB PAGES
-    EJS_player = "#game";
-    EJS_core = "snes";
-    EJS_gameUrl = "roms/smw.smc";
-    EJS_pathtodata = "https://cdn.emulatorjs.org/stable/data/";
+    console.log("ANTES do EmulatorJS");
   </script>
 
-  <script src="https://cdn.emulatorjs.org/stable/loader.js"></script>
+  <script src="https://cdn.emulatorjs.org/stable/loader.js"
+          onload="console.log('LOADER CARREGOU')"
+          onerror="console.error('LOADER NÃO CARREGOU')">
+  </script>
 
-  <style>
-    html, body {
-      margin: 0;
-      background: black;
-      height: 100%;
-      overflow: hidden;
-      font-family: Arial, sans-serif;
-    }
-    #game {
-      width: 100vw;
-      height: 100vh;
-    }
-    #btn {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      padding: 15px 30px;
-      font-size: 18px;
-      background: #fff;
-      border: none;
-      border-radius: 8px;
-    }
-  </style>
+  <script>
+    console.log("DEPOIS do EmulatorJS");
+  </script>
 </head>
 <body>
-
-  <div id="game"></div>
-
-  <button id="btn" onclick="document.documentElement.requestFullscreen()">
-    JOGAR EM TELA CHEIA
-  </button>
-
+  <h1>Teste</h1>
 </body>
 </html>
